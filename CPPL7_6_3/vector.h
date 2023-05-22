@@ -4,16 +4,18 @@ template<class T>
 class vector {
 public:
 	vector() {
-		v = new T(N2);
+		v = new T[N2];
 	}
 	vector(int N_) {
 		N2 = N_;
-		v = new T(N2){ 0 };
+		v = new T[N2]{ 0 };
 	}
 	~vector() {
 		delete[] v;
 		v = nullptr;
 	}
+	vector(const vector<T>&) = delete;
+	vector<T>& operator=(const vector<T>&) = delete;
 	T at(int index_) {
 		if (index_ < N1) {
 			return v[index_];
